@@ -19,3 +19,17 @@ vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
 
 # Wifi direct
 wifi.direct.interface=p2p0
+
+# Force Vulkan UI Rendering
+ro.hwui.hardware.renderer=vulkan
+debug.hwui.renderer=vulkan
+
+# SurfaceFlinger Timing Tweaks (Fix VSync Future Timestamps)
+ro.surface_flinger.use_content_detection_for_refresh_rate=false
+ro.surface_flinger.set_touch_timer_ms=0
+ro.surface_flinger.set_display_type_timer_ms=0
+ro.surface_flinger.use_context_priority=1
+
+# Disable Expensive Blurs for 2GB RAM
+ro.surface_flinger.supports_background_blur=0
+ro.sf.blurs_are_expensive=1
