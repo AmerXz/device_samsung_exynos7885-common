@@ -20,16 +20,21 @@ vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
 # Wifi direct
 wifi.direct.interface=p2p0
 
-# Force Vulkan UI Rendering
-ro.hwui.hardware.renderer=vulkan
-debug.hwui.renderer=vulkan
+## --- UI Slaas & Lag Fix (Safe Fallback to SkiaGL) ---
+ro.hwui.hardware.renderer=skiagl
+debug.hwui.renderer=skiagl
 
-# SurfaceFlinger Timing Tweaks (Fix VSync Future Timestamps)
+# Force SurfaceFlinger to bypass timestamp desync 
+ro.surface_flinger.use_context_priority=1
+ro.surface_flinger.max_virtual_display_dimension=4096
+
+# Disable stutter-prone automatic refresh rate changes
 ro.surface_flinger.use_content_detection_for_refresh_rate=false
 ro.surface_flinger.set_touch_timer_ms=0
 ro.surface_flinger.set_display_type_timer_ms=0
-ro.surface_flinger.use_context_priority=1
 
-# Disable Expensive Blurs for 2GB RAM
-ro.surface_flinger.supports_background_blur=0
-ro.sf.blurs_are_expensive=1
+# Ensure strict Hardware Acceleration alignment
+debug.egl.hw=1
+debug.sf.hw=1
+persist.sys.ui.hw=true
+
