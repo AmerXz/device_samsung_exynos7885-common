@@ -20,7 +20,7 @@ vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
 # Wifi direct
 wifi.direct.interface=p2p0
 
-## --- UI Slaas & Lag Fix (Safe Fallback to SkiaGL) ---
+## --- UI Smoothness & Lag Fix (SkiaGL Optimized) ---
 ro.hwui.hardware.renderer=skiagl
 debug.hwui.renderer=skiagl
 
@@ -33,6 +33,15 @@ ro.surface_flinger.use_content_detection_for_refresh_rate=false
 ro.surface_flinger.set_touch_timer_ms=0
 ro.surface_flinger.set_display_type_timer_ms=0
 
+# Maximize UI & RenderThread priorities for low-end specs
+sys.use_fifo_ui=1
+persist.sys.boost.by_default=1
+ro.hwui.render_thread_priority=-20
+
+# Disable heavy composition layouts & graphics dithering
+ro.surface_flinger.supports_background_blur=0
+ro.sf.blurs_are_expensive=1
+persist.sys.use_dithering=0
+
 # Ensure strict Hardware Acceleration alignment
 persist.sys.ui.hw=true
-
