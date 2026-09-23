@@ -45,3 +45,12 @@ persist.sys.use_dithering=0
 
 # Ensure strict Hardware Acceleration alignment
 persist.sys.ui.hw=true
+
+## Dalvik
+dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.boot-dex2oat-threads=4
+dalvik.vm.image-dex2oat-threads=4
+
+# Fix Pinner Service freezes
+ro.config.no_pinner=true
